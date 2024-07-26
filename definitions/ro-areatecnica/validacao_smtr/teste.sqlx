@@ -1,0 +1,6 @@
+config {
+  type: "table",
+  schema: "validacao_smtr"
+}
+
+SELECT * FROM ${ref("projeto_subsidio_sppo","viagem_completa")} LIMIT 100
