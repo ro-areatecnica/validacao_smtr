@@ -1,0 +1,23 @@
+config {
+    type: "declaration",
+    database: "rj-smtr",
+    schema: "projeto_subsidio_sppo",
+    name: "viagem_completa",
+}
+
+config {
+    type: "declaration",
+    database: "rj-smtr",
+    schema: "projeto_subsidio_sppo",
+    name: "viagem_planejada",
+}
+
+config {
+    type: "declaration",
+    database: "rj-smtr",
+    schema: "projeto_subsidio_sppo",
+    name: "viagem_conformidade",
+}
+
+  ,
+  ,
