@@ -2,5 +2,5 @@ config {
     type: "declaration",
     database: "rj-smtr",
     schema: "projeto_subsidio_sppo",
-    name: "viagem_completa",
+    name: "subsidio_data_versao_efetiva",
 }
