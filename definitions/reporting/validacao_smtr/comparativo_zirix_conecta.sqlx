@@ -1,0 +1,54 @@
+config {
+  type: "view",
+  schema: "validacao_smtr",
+}
+
+SELECT
+  z.consorcio,
+  z.data,
+  z.tipo_dia,
+  z.id_empresa,
+  z.id_veiculo,
+  c.id_viagem as id_viagem_conecta,
+  z.id_viagem as id_viagem_zirix,
+  z.servico_informado,
+  z.servico_realizado,
+  z.vista,
+  z.trip_id,
+  z.shape_id,
+  z.sentido,
+  c.datetime_partida as datetime_partida_conecta,
+  z.datetime_partida as datetime_partida_zirix,
+  c.datetime_chegada as datetime_chegada_conecta,
+  z.datetime_chegada as datetime_chegada_zirix,
+  z.inicio_periodo,
+  z.fim_periodo,
+  c.tipo_viagem as tipo_viagem_conecta,
+  z.tipo_viagem as tipo_viagem_zirix,
+  c.tempo_viagem as tempo_viagem_conecta,
+  z.tempo_viagem as tempo_viagem_zirix,
+  z.distancia_planejada,
+  c.distancia_aferida as distancia_aferida_conecta,
+  z.distancia_aferida as distancia_aferida_zirix,
+  c.n_registros_shape as n_registros_shape_conecta,
+  z.n_registros_shape as n_registros_shape_zirix,
+  c.n_registros_minuto as n_registros_minuto_conecta,
+  z.n_registros_minuto as n_registros_minuto_zirix,
+  c.perc_conformidade_shape as perc_conformidade_shape_conecta,
+  z.perc_conformidade_shape as perc_conformidade_shape_zirix,
+  c.perc_conformidade_distancia as perc_conformidade_distancia_conecta,
+  z.perc_conformidade_distancia as perc_conformidade_distancia_zirix,
+  c.perc_conformidade_registros as perc_conformidade_registros_conecta,
+  z.perc_conformidade_registros as perc_conformidade_registros_zirix
+FROM
+  ${ref("viagem_completa_zirix")} z
+LEFT JOIN ${ref("viagem_completa")} c
+ON 
+  z.data = c.data AND
+  z.id_empresa = c.id_empresa AND
+  z.id_veiculo = c.id_veiculo AND
+  z.servico_informado = c.servico_informado AND
+  z.trip_id = c.trip_id AND
+  z.shape_id = c.shape_id AND
+  z.sentido = c.sentido AND
+  abs(datetime_diff(z.datetime_chegada, c.datetime_chegada, MINUTE)) < 15
