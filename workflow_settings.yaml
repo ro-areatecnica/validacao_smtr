@@ -1,0 +1,4 @@
+defaultProject: ro-areatecnica
+defaultLocation: US
+defaultDataset: dataform
+defaultAssertionDataset: dataform_assertions

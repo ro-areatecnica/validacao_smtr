@@ -1,0 +1,8 @@
+config {
+  type: "view",
+  schema: "validacao_smtr",
+}
+
+SELECT * EXCEPT(versao_modelo, datetime_ultima_atualizacao) from `rj-smtr.projeto_subsidio_sppo.viagem_completa` WHERE data >= '2024-07-28'
+EXCEPT DISTINCT
+SELECT * EXCEPT(versao_modelo, datetime_ultima_atualizacao) FROM `ro-areatecnica.validacao_smtr.viagem_completa`

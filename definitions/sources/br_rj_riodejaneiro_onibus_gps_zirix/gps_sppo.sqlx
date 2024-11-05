@@ -1,0 +1,6 @@
+config {
+    type: "declaration",
+    database: "rj-smtr",
+    schema: "br_rj_riodejaneiro_onibus_gps_zirix",
+    name: "gps_sppo",
+}
